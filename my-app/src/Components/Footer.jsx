@@ -1,8 +1,15 @@
+
 import React from 'react';
+import restaurantFood from '../assets/restauranfood.jpg';
 
 function Footer() {
   return (
     <footer>
+        <section class='footer-content'>
+            <section class="footer-image-container">
+        <img src={restaurantFood} alt="footer image" className="footer-img" />
+        </section>
+        <section class="footer-nav">
         <h3>Doormat Navigation</h3>
       <ul>
         <li>
@@ -24,6 +31,8 @@ function Footer() {
           <a href="/login">Login</a>
         </li>
       </ul>
+      </section>
+      <section class="footer-contact">
       <h3>Contact</h3>
       <ul>
         <li>
@@ -35,6 +44,9 @@ function Footer() {
         <li>
             <a href="/email">Email</a>
         </li>
+        </ul>
+        </section>
+        <section class="footer-social">
         <h3>Social Media Links</h3>
         <ul>
         <li>
@@ -47,7 +59,8 @@ function Footer() {
             <a href="twitter">Twitter</a>
         </li>
         </ul>
-      </ul>
+        </section>
+        </section>
     </footer>
   );
 }
