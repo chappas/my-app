@@ -1,8 +1,10 @@
+import React from 'react';
 import { render, screen } from '@testing-library/react';
-import App from './App';
+import BookingForm from './Components/BookingForm';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+test('renders BookingForm with content (should pass)', () => {
+  render(<BookingForm />);
+
+  const firstNameInput = screen.getByLabelText('First Name'); // Assuming label for first name input
+  expect(firstNameInput).toBeInTheDocument();
 });
