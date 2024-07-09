@@ -3,30 +3,30 @@ import React from 'react';
 function Testimonials() {
   return (
     <testimonials>
-<section class="testimonials">
-<h2 class="test-title">Testimonials</h2>
-<article class="testimonial">
-<h3>Rating: <span class="rating">4.5</span> stars</h3>
-<p class="testimonial-name">John Doe</p>
-<p class="testimonial-text">This is a great restaurant! I highly recommend it.</p>
+<section className="testimonials">
+<h2 className="test-title">Testimonials</h2>
+<article className="testimonial">
+<h3>Rating: <span className="rating">4.5</span> stars</h3>
+<p className="testimonial-name">John Doe</p>
+<p className="testimonial-text">This is a great restaurant! I highly recommend it.</p>
 </article>
 
-<article class="testimonial">
-<h3>Rating: <span class="rating">5</span> stars</h3>
-<p class="testimonial-name">Jane Smith</p>
-<p class="testimonial-text">This restaurant exceeded my expectations. Very satisfied!</p>
+<article className="testimonial">
+<h3>Rating: <span className="rating">5</span> stars</h3>
+<p className="testimonial-name">Jane Smith</p>
+<p className="testimonial-text">This restaurant exceeded my expectations. Very satisfied!</p>
 </article>
 
-<article class="testimonial">
-<h3>Rating: <span class="rating">4</span> stars</h3>
-<p class="testimonial-name">Michael Chen</p>
-<p class="testimonial-text">Overall a good restaurant, but could use some more flavour.</p>
+<article className="testimonial">
+<h3>Rating: <span className="rating">4</span> stars</h3>
+<p className="testimonial-name">Michael Chen</p>
+<p className="testimonial-text">Overall a good restaurant, but could use some more flavour.</p>
 </article>
 
-<article class="testimonial">
-<h3>Rating: <span class="rating">4.8</span> stars</h3>
-<p class="testimonial-name">Alice Garcia</p>
-<p class="testimonial-text">Very friendly restaurant. Highly recommend!</p>
+<article className="testimonial">
+<h3>Rating: <span className="rating">4.8</span> stars</h3>
+<p className="testimonial-name">Alice Garcia</p>
+<p className="testimonial-text">Very friendly restaurant. Highly recommend!</p>
 </article>
 </section>
 </testimonials>

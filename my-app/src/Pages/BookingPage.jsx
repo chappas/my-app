@@ -1,52 +1,59 @@
-import React, { useState, useReducer } from 'react';
-import { fetchAPI, submitAPI } from '../api';
 import BookingForm from '../Components/BookingForm';
-import { useNavigate } from 'react-router';
+import { fetchAPI, submitAPI } from '../api.js';
+import { useNavigate } from "react-router-dom";
+import { useState, useReducer, useEffect } from 'react';
+
+const date = new Date()
 
 function BookingPage() {
+// step 2 - create updateTimes function which will handle the state change, this will change availableTimes based on the date change. For now it can return the same available times regardless of the date.
+function updateTimes(state, action){
+       console.log(action)
+        let newState
 
-    const [date, setDate] = useState(new Date())
+    switch (action.type) {
+      case 'UPDATE_TIMES':
+      const times = fetchAPI(new Date(action.payload));
+      newState = times
+      break;
 
-    function initializeTimes(date) {
-        return fetchAPI(date);
+      default:
+        throw new Error()
+    }
+    return newState
+    }
+// step 3 - create a function called initializeTimes which will create the intial state for the availableTimes.
+    function initializeTimes(){
+        return fetchAPI(date)
     }
 
-    function updateTimes(date) {
-        const dateSet = new Date(date)
-        return fetchAPI(dateSet);
-    }
+// step 4 - change availableTimes to a reducer providing the two previous functions as parameters.
+    const [availableTimes, dispatch] = useReducer(updateTimes, initializeTimes(date));
+
+    const [ dateChange, setDateChange ] = useState(date);
 
     const navigate = useNavigate();
 
-    function submitForm(formData) {
-    const isSubmitted = submitAPI(formData);
-
-    if (isSubmitted) {
-      navigate("/confirmed");
+    function submitForm(formData){
+        const formSubmission = submitAPI(formData)
+    if (formSubmission === true) {
+        navigate("/confirmed")
     }
-  }
-
-    function availableTimesReducer(state, action) {
-        let newState
-        switch (action.type) {
-            case 'UPDATE_TIMES':
-                const newDate = new Date(action.payload);
-                newState = updateTimes(newDate)
-                break;
-                default:
-                    throw new Error();
-        }
-        return newState;
     }
 
-    const [availableTimes, dispatch] = useReducer(availableTimesReducer, initializeTimes(date))
+    useEffect(() => {
+        const newDates = fetchAPI(new Date(dateChange))
+        console.log(newDates)
+    }, [dateChange])
+
+
 
   return (
-<div>
-    <h1>Little Lemon Reserve a Table</h1>
-<BookingForm availableTimes={availableTimes} dispatch={dispatch} submitForm={submitForm}/>
-</div>
+    <div>
+      <h1>Your Booking</h1>
+      <BookingForm availableTimes={availableTimes} submitForm={submitForm} onDateChange={(newDate) => {dispatch({type: 'UPDATE_TIMES', payload: newDate }); setDateChange(newDate)}}/>
+    </div>
   );
-};
+}
 
 export default BookingPage;

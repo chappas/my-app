@@ -5,11 +5,11 @@ import restaurantFood from '../assets/restauranfood.jpg';
 function Footer() {
   return (
     <footer>
-        <section class='footer-content'>
-            <section class="footer-image-container">
+        <section className='footer-content'>
+            <section className="footer-image-container">
         <img src={restaurantFood} alt="footer image" className="footer-img" />
         </section>
-        <section class="footer-nav">
+        <section className="footer-nav">
         <h3>Doormat Navigation</h3>
       <ul>
         <li>
@@ -32,7 +32,7 @@ function Footer() {
         </li>
       </ul>
       </section>
-      <section class="footer-contact">
+      <section className="footer-contact">
       <h3>Contact</h3>
       <ul>
         <li>
@@ -46,7 +46,7 @@ function Footer() {
         </li>
         </ul>
         </section>
-        <section class="footer-social">
+        <section className="footer-social">
         <h3>Social Media Links</h3>
         <ul>
         <li>

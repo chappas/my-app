@@ -1,60 +1,49 @@
 import React, { useState } from 'react';
+import { submitAPI } from '../api.js';
 
-function BookingForm({availableTimes, dispatch, submitForm}) {
-console.log(dispatch)
-    const [formData, setFormData] = useState({
-        firstName: "",
-        lastName: "",
-        contactNumber: "",
-        date: "",
-        time: "00:00",
-        noOfGuests: 1,
-        occasion: "Birthday"
-    });
 
-    function changeHandler(e) {
-        setFormData({...formData, [e.target.name]: e.target.value });
-    }
+function BookingForm({availableTimes, onDateChange, submitForm}) {
+  const [name, setName] = useState('');
+  const [date, setDate] = useState('');
+  const [time, setTime] = useState('');
+  const [guests, setGuests] = useState(1);
+  const [occasion, setOccasion] = useState('Birthday');
 
-    const handleDateChange = async (event) => {
-        const { name, value } = event.target
-        setFormData((prevFormData) => ({
-          ...prevFormData,
-          [name]: value
-        }))
-       dispatch({ type: 'UPDATE_TIMES', payload: value })
-      }
 
-    function submitHandler(e) {
-        e.preventDefault();
-        submitForm(formData);
-    }
 
-    const currentDate = new Date().toISOString().split("T")[0]
-    const options = availableTimes.map(time => <option key={time}>{time}</option>)
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    submitForm({name, date, time, guests, occasion})
 
-    return (
-        <form style={{ display: 'grid', maxWidth: '200px', gap: '20px' }} onSubmit={submitHandler}>
-   <label htmlFor="first-name">First Name</label>
-   <input type="text" id="first-name" name="firstName" value={formData.firstName} onChange={changeHandler} />
-   <label htmlFor="last-name">Last Name</label>
-   <input type="text" id="last-name" name="lastName" value={formData.lastName} onChange={changeHandler} />
-   <label htmlFor="res-date">Choose date</label>
-   <input type="date" id="res-date" name="date" value={formData.date} onChange={handleDateChange} required min={currentDate} />
-   <label htmlFor="res-time">Choose time</label>
-   <select id="res-time " value={formData.time} onChange={changeHandler} required >
-      {options}
+    console.log('Reservation details:', {name}, {date}, {time}, {guests}, {occasion}, {availableTimes});
+}
+
+  return (
+    <form style={{ display: 'grid', maxWidth: '200px', gap: '20px' }} onSubmit={handleSubmit} >
+      <label htmlFor="res-name">Name</label>
+      <input type="name" id="name" value={name} onChange={(e) => setName(e.target.value)} />
+      <label htmlFor="res-date">Choose date</label>
+      <input type="date" id="res-date" value={date} onChange={(e) => {setDate(e.target.value); onDateChange(e.target.value)}} />
+
+      <label htmlFor="res-time">Choose time</label>
+      <select id="res-time" value={time} onChange={(e) => setTime(e.target.value)}>
+        {availableTimes.map((time) => (
+          <option key={time}>{time}</option>
+        ))}
       </select>
-   <label htmlFor="guests">Number of guests</label>
-   <input type="number" placeholder="1" min="1" max="10" id="guests" name="noOfGuests" value={formData.noOfGuests} onChange={changeHandler} />
-   <label htmlFor="occasion">Occasion</label>
-   <select id="occasion" name="occasion" value={formData.occasion} onChange={changeHandler}>
-      <option>Birthday</option>
-      <option>Anniversary</option>
-   </select>
-   <input type="submit" value="Make Your reservation" />
-</form>
-    );
+
+      <label htmlFor="guests">Number of guests</label>
+      <input type="number" placeholder="1" min="1" max="10" id="guests" value={guests} onChange={(e) => setGuests(e.target.value)} />
+
+      <label htmlFor="occasion">Occasion</label>
+      <select id="occasion" value={occasion} onChange={(e) => setOccasion(e.target.value)}>
+        <option>Birthday</option>
+        <option>Anniversary</option>
+      </select>
+
+      <input type="submit" value="Make Your reservation" />
+    </form>
+  );
 }
 
 export default BookingForm;
