@@ -21,10 +21,9 @@ function BookingForm({availableTimes, onDateChange, submitForm}) {
   return (
     <form style={{ display: 'grid', maxWidth: '200px', gap: '20px' }} onSubmit={handleSubmit} >
       <label htmlFor="res-name">Name</label>
-      <input type="name" id="name" value={name} onChange={(e) => setName(e.target.value)} />
+      <input type="name" id="name" minLength="2" maxLength="50" required value={name} onChange={(e) => setName(e.target.value)} />
       <label htmlFor="res-date">Choose date</label>
-      <input type="date" id="res-date" value={date} onChange={(e) => {setDate(e.target.value); onDateChange(e.target.value)}} />
-
+      <input type="date" id="res-date" min={new Date().toISOString().slice(0, 10)} required value={date} onChange={(e) => {setDate(e.target.value); onDateChange(e.target.value)}} />
       <label htmlFor="res-time">Choose time</label>
       <select id="res-time" value={time} onChange={(e) => setTime(e.target.value)}>
         {availableTimes.map((time) => (
@@ -33,7 +32,7 @@ function BookingForm({availableTimes, onDateChange, submitForm}) {
       </select>
 
       <label htmlFor="guests">Number of guests</label>
-      <input type="number" placeholder="1" min="1" max="10" id="guests" value={guests} onChange={(e) => setGuests(e.target.value)} />
+      <input type="number" placeholder="1" min="2" max="10" required id="guests" value={guests} onChange={(e) => setGuests(e.target.value)} />
 
       <label htmlFor="occasion">Occasion</label>
       <select id="occasion" value={occasion} onChange={(e) => setOccasion(e.target.value)}>
