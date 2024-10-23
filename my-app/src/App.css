@@ -642,3 +642,7 @@ gap: 2em;
   .cs.vis .ops, .cs.vis .bd {
   display: flex;
   }
+
+  .res-form input, .res-form select {
+  border-radius: 12px;
+}
