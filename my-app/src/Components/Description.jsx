@@ -4,7 +4,7 @@ import marioAndAdrianA from '../assets/Mario and Adrian A.jpg';
 
 function Description() {
   return (
-    <about>
+    <div>
     <section className="about">
      <article className="about-text">
       <p className="about-title">Little Lemon</p>
@@ -12,11 +12,11 @@ function Description() {
       <p className="about-description">The Little Lemon is a family owned mediterranean restaurant that takes immense price in its food offerings and service</p>
      </article>
      <article className="about-images">
-      <img src={outdoorRestaurant} alt="outdoor-image" className="outdoor-image img" />
-      <img src={marioAndAdrianA} alt="mario-and-adrian-a-image" className="mario-adrian-a-image img" />
+      <img src={outdoorRestaurant} className="outdoor-image img" />
+      <img src={marioAndAdrianA} className="mario-adrian-a-image img" />
      </article>
     </section>
-   </about>
+   </div>
   );
 }
 

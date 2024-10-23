@@ -49,7 +49,7 @@ function updateTimes(state, action){
 
 
   return (
-    <div>
+    <div className="booking-heading">
       <h1>Your Booking</h1>
       <BookingForm availableTimes={availableTimes} submitForm={submitForm} onDateChange={(newDate) => {dispatch({type: 'UPDATE_TIMES', payload: newDate }); setDateChange(newDate)}}/>
     </div>

@@ -2,7 +2,7 @@ import React from 'react';
 
 function Testimonials() {
   return (
-    <testimonials>
+    <div>
 <section className="testimonials">
 <h2 className="test-title">Testimonials</h2>
 <article className="testimonial">
@@ -29,7 +29,7 @@ function Testimonials() {
 <p className="testimonial-text">Very friendly restaurant. Highly recommend!</p>
 </article>
 </section>
-</testimonials>
+</div>
   );
 }
 

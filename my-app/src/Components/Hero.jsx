@@ -4,7 +4,7 @@ import restaurantFoodImage from '../assets/restauranfood.jpg';
 function Hero() {
   return (
     <main>
-        <hero>
+        <div>
           <div className="hero">
             <div className="hero-content">
               <div className="hero-description">
@@ -18,7 +18,7 @@ function Hero() {
               </div>
             </div>
           </div>
-        </hero>
+        </div>
     </main>
   );
 }

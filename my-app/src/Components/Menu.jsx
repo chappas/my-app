@@ -4,7 +4,7 @@ import bruschetta from '../assets/bruchetta.svg';
 
 function Menu() {
   return (
-    <specials>
+    <div>
     <section className="specials">
     <section className="specials-heading-content">
       <p className="specials-heading">Specials</p>
@@ -38,7 +38,7 @@ function Menu() {
         <p className="special-delivery">Order a delivery for $4</p>
       </article>
     </section>
-  </specials>
+  </div>
   );
 }
 
