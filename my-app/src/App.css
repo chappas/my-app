@@ -449,8 +449,6 @@ main {
 margin: 30px auto;
 max-width: 450px;
 padding: 20px;
-border: 1px solid;
-border-radius: 10px;
 }
 .button-container {
   display: flex;
